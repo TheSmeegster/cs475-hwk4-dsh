@@ -6,6 +6,7 @@
  */
 #include "dsh.h"
 
+#include <dirent.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -17,3 +18,16 @@
 #include <string.h>
 
 // TODO: Your function definitions (declarations in dsh.h)
+
+//Used to check if a given path points to a executable file
+int isFile(char* path){
+
+    //Works as a boolean for if the indicated path is a valid path
+    int isFile = 1;
+
+    if (access(path, F_OK | X_OK) != 0) {
+        isFile = 0;
+    }
+
+    return isFile;
+};
